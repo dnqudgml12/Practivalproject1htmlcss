@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<!--action: 폼데이터를 전송하면 받는 서버쪽 파일지정
+method: 폼을 서버에 전송하는 메소드 종류
+get/post
+방법에 따라서 보안 유뮤 등등 결정
+get 
+Default 
+URL에 폼 데이터가 포함되어 전송
+전송할 수 있는 정보 길이가 제한 되어 있음
+퍼머링크(permalink, 고유한 주소체계)로 사용될 수 있음
+
+post
+폼 데이터는 header의 body에 담겨 전송
+URL에정보가 표시되지 않음
+전송할 수 잇는 데이터 길이 제한이 없음
+GET방식보다 보안성이 높음
+
+
+name:폼 이름 식별자
+target
+ action 파일을 현재 창이 아닌 다른 창에서 열도록 할 떄 지정
+ submit이 클릭하면 데이터 받아서 처리하는 서버쪽 파일이 action
+ 
+ enctype
+ 폼더에티거 서버에 전송할 대 인코딩 되는 방식
+ 파일전송시 사용
+ enctype= "multopart/form-data"
+
+
+ fieldset 폼엘리먼트를 그룹화할때 사용
+ legend 그룹화한 폼 엘리먼트의 이름을 지정할때 사용
+-->
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="layout.css"/>
+        <title>Form입니다</title>
+    </head>
+    <body>
+
+        <div class="total">
+            <div>
+                <h2>HTML Forms</h2>
+                <p>사용자 정보 입력</p>
+        <form action="form_ok.php" method="post">
+            <div class="total">
+            <div><label for="uname">이름:</label></div>
+            <input style="width: 150px;"type="text" id="uname" placeholder="이름을 입력"/>
+            <div><label>이메일</label></div>
+            <input style="width: 150px;" type="text" id="email" name="email"/>
+
+            <input style="width:60px; margin-top: 30px; border:1px solid gray;" type="submit" value="Submit"/>
+        </div>
+        </form>
+    </div>
+
+
+
+    <form action="save_ok.php"  name="person" method="post">
+
+        <fieldset style="width: 200px;margin:5px">
+            <legend>개인 정보 입력</legend>
+            이름: <input type="text" name="name"/><br><br>
+            이메일: <input type="text" name="email"/><br><br>
+
+
+        </fieldset>
+
+        <input type="submit" value="저장"><input type="reset" value="취소">
+
+    </form>
+
+
+    <form>
+        <label for="fname"><span>*</span>이름:</label>
+        <input type="text" id="uname" name="uname" required>
+        <!--required 속성은 폼 데이터(form data)가 서버로 제출되기 전 반드시 채워져 있어야 하는 입력 필드를 명시합니다.-->
+         <label for="pwd"><span>*</span>비밀번호:</label>
+         <input type="password" id="pwd" name="pwd" placeholder="4자 이상입력" required>
+
+         <label for="mobile">핸드폰번호:</label>
+
+         <!--라벨과 결합될 요소의 id 속성값-->
+         <input type="text" id="mobile" name="mobile" placeholder="00*-000*-0000" part="[0-9]
+         {2,3}-[0,9]{3,4}-[0-9]{3,4}">
+         <label for="gender">성별:</label>
+         <input type="radio" value="M" id="gender1" name="gender"  checked> 남
+         <input type="radio" value="W" id="radio" name="gender" >여 <br>
+         <!--이름이 같으면 그룹핑-->
+
+         신입생/복학생<input type="radio" value="fre" id="gender1" name="istype"  checked> 신입생
+         <input type="radio" value="old" id="radio" name="istype" >복학생 <br>
+         <label for="hobby">취미</label>
+         <input type="checkbox" id="hobbyl" name="hobby1" value="1" checked> 영화감사
+         <input type="checkbox" id="hobbyl" name="hobby2" value="2"> 독서
+         <input type="checkbox" id="hobbyl" name="hobby3" value="3"> 스포츠 <br>
+         <br>
+         <input type="submit" value="저장"> <input type="reset" value="새로 입력">
+
+         
+    
+  
+        </form>
+     지역선택:
+        <select name="city">
+            <optgroup label="서울">
+                <option value="1">강남구</option>
+                <option value="2">서초구</option>
+                <option value="3">송파구</option>
+            </optgroup>
+            <optgroup label="경기도">
+                <option value="11">성남시</option>
+                <option value="12">수원시</option>
+                <option value="13">용인시</option>
+            </optgroup>
+
+        </select>
+<br>
+        <input type="text" name="subject">
+        <br>
+        <textarea name="content" cols="40" rows="5">초기값</textarea>
+        <br>
+        <input type="date" min="2019-09-01" max="2020-12-31" name="fromdate">
+        <input type="color" name="color" value="ff0000">
+
+
+        <form action="/examples/media/action_target.php" method="get">
+            학과 : <input type="text" name="st_department" list="depList"><br>
+            이름 : <input type="text" name="st_name"><br><br>
+            <datalist id="depList">
+                <option value="컴퓨터공학과"></option>
+                <option value="영어영문과"></option>
+                <option value="경영학과"></option>
+                <option value="사회체육과"></option>
+            </datalist>
+            <button type="submit">제출하기</button>
+        </form>
+    </div>
+
+    </body>
+</html>
